@@ -10,4 +10,4 @@
 =#
 
 
-∷(handle, value) = :( $(Symbol(handle)) = $value ) |> eval
+∷(handle::String, value::Any) = :( $(Symbol(handle)) = $value ) |> eval
