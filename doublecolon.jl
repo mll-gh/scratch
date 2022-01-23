@@ -3,9 +3,9 @@
     -----------------------------------------
     streamlines the creation of objects via string-valued left-hand-sides:
     the line
-        "string" ∷ object
+        "handle" ∷ object
     is equivalent to
-        string = object
+        handle = object
     without the quotes, and so object naming can be neatly scripted
 =#
 
