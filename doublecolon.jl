@@ -1,12 +1,14 @@
 #=
-    METAPROGRAMMING INFIX ASSIGNMENT OPERATOR
-    -----------------------------------------
-    streamlines the creation of objects via string-valued left-hand-sides:
-    the line
-        "handle" ∷ object
-    is equivalent to
-        handle = object
-    without the quotes, and so object naming can be neatly scripted
+
+        METAPROGRAMMING INFIX ASSIGNMENT OPERATOR
+        =========================================
+        creates an object in global scope from a string-valued left-hand-side:
+        the line
+            ` "handle" ∷ object `
+        is equivalent to
+            ` handle = object `,
+        which allows variable names to be scripted
+
 =#
 
 
