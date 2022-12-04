@@ -10,8 +10,8 @@ import Base.|>
 #   now the right-hand-side in piped expressions can have multiple arguments;
 #   for example:
 #       (1, 2) |> (a,b)-> a+b
-#   returns `3` instead of an error (though arg-counting is imperfect)
-#   ———makes anonymous function calls more readable overall
+#   returns `3` instead of an error (though arg-counting is imperfect)———
+#   makes anonymous function calls more readable overall
 |>(arg, func) = first(methods(func)).nargs > 2 ? func(arg...) : func(arg)
 
 
