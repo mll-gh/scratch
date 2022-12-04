@@ -10,9 +10,9 @@ import Base.|>
 #   now the right-hand-side in piped expressions can have multiple arguments;
 #   for example:
 #       (1, 2) |> (a,b)-> a+b
-#   returns `3` instead of an error (though arg-counting is imperfect)———
-#   makes anonymous function calls more readable overall
-|>( arg, func ) = first(methods(func)).nargs > 2 ? func(arg...) : func(arg)
+#   returns `3` instead of an error———makes anonymous function calls much
+#   prettier and more readable overall (shouldn't break default behavior)
+|>( X, F ) = length(X) ∈ (f.nargs-1 for f in methods(F)) ? F(X...) : F(X)
 
 
 # LEFT-PIPE OPERATOR———FOR AVOIDING EVEN MORE PARENTHESES
@@ -21,7 +21,7 @@ import Base.|>
 #       ((a,b)-> a+b) <| (1,2)
 #   returns `3` analogously to the above example (note the extra parentheses
 #   on the left, which are only necessary when left-piping anonymous functions)
-<|( func, arg ) = |>(arg, func)
+<|( F, X ) = |>(X, F)
 
 
 # STRING-ASSIGNMENT INFIX OPERATOR
