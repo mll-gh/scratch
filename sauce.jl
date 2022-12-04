@@ -43,18 +43,18 @@
         𝛛 𝛻 𝜕 𝜵 𝝏 𝝯 𝞉 𝞩 𝟃 𞻰 𞻱
     (ꜝc.f. https://discourse.julialang.org/t/is-not-an-operator/20221/2; there
      are also a few other overloadable infix operators, such as:
-        – logical operrators, e.g., && and ||
+        – logical operators, e.g., && and ||
         – the >> and << operators, which are probably bit-shifts (?REPL bug)
         – the pipe operators |> and <| extended below
-     the extensibility of <| despite any default definition suggests that there
-     may be other special symbols/combos thereof with this property as well...
+     the extensibility of <| despite any default definition suggests that
+     there may be other special symbols or combos also having this property...
      note that the above list has not been manually verified!)
 =#
 
 # EXTENSION OF PIPE OPERATOR TO HIGHER-ARITY FUNCTIONS
 import Base.|>
 #   extends right-pipe operator to support anyonmous functions with multiple
-#   arguments (though care must be taken with certain functions; see below)
+#   arguments (though care must be taken with certain named functions)
 #   for example:
 #       (1, 2) |> (a,b)-> a+b
 #   returns `3` instead of an error———makes anonymous function calls much
@@ -64,7 +64,7 @@ import Base.|>
 #    equivalent call with the original version, i.e.,
 #       (1,2) |> z-> z[1]+z[2]
 #    according to @time; however, an ambiguity can arise when multiple methods
-#    are available under the same handle func() taking in different numbers of
+#    are available under the same named func() taking in different numbers of
 #    arguments, e.g.,
 #    	func(a)     = ...
 #    	func(a,b)   = ...
