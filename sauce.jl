@@ -81,7 +81,7 @@ import Base.|>
 #       ((a,b)-> a+b) <| (1,2)
 #   returns `3` analogously to the above example (note the extra parentheses on
 #   the left, which are only necessary when left-piping anonymous functions)
-<|( F, X ) = |>(X, F)
+<|( func, arg ) = |>(arg, func)
 
 # STRING-ASSIGNMENT INFIX OPERATOR
 #   metaprogramming shortcut, can be input using `\Colon<Tab>`;
