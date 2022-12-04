@@ -25,7 +25,7 @@ import Base.|>
 
 
 # STRING-ASSIGNMENT INFIX OPERATOR
-#   for example:
+#   input with `\Colon<Tab>` for metaprogramming shortcut; for example:
 #       "RNG" ∷ rand()
 #   places the variable `RNG` in global scope with value corresponding to
 #   the associated `rand()` call———useful for automatically generating names
