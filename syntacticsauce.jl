@@ -12,7 +12,7 @@
     a subset of the following unicode symbolsꜝ have the special property in
     julia of being interpretable as infix operators, like multiplication or
     addition, etc.:
-        + < = < | ~ ¬ ± × ÷ ϶ ؆ ؇ ؈ ⁄ ⁒ ⁺ ⁻ ⁼ ₊ ₋ ₌ ℘ ⅀ ⅁ ⅂ ⅃ ⅄ ⅋ ← ↑ → ↓ ↔
+        + < = > | ~ ¬ ± × ÷ ϶ ؆ ؇ ؈ ⁄ ⁒ ⁺ ⁻ ⁼ ₊ ₋ ₌ ℘ ⅀ ⅁ ⅂ ⅃ ⅄ ⅋ ← ↑ → ↓ ↔
         ↚ ↛ ↠ ↣ ↦ ↮ ⇎ ⇏ ⇒ ⇔ ⇴ ⇵ ⇶ ⇷ ⇸ ⇹ ⇺ ⇻ ⇼ ⇽ ⇾ ⇿ ∀ ∁ ∂ ∃ ∄ ∅ ∆ ∇ ∈ ∉ ∊ ∋
         ∌ ∍ ∎ ∏ ∐ ∑ − ∓ ∔ ∕ ∖ ∗ ∘ ∙ √ ∛ ∜ ∝ ∞ ∟ ∠ ∡ ∢ ∣ ∤ ∥ ∦ ∧ ∨ ∩ ∪ ∫ ∬ ∭
         ∮ ∯ ∰ ∱ ∲ ∳ ∴ ∵ ∶ ∷ ∸ ∹ ∺ ∻ ∼ ∽ ∾ ∿ ≀ ≁ ≂ ≃ ≄ ≅ ≆ ≇ ≈ ≉ ≊ ≋ ≌ ≍ ≎ ≏
