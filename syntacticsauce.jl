@@ -57,11 +57,18 @@ import Base.|>
 #   for example:
 #       (1, 2) |> (a,b)-> a+b
 #   returns `3` instead of an error———makes anonymous function calls much
-#   prettier and more readable overall (the method-checking comes with a tiny
-#   performance hit, but minimizes interference with default behavior on non-
-#   anonymous functions; this can be made as fast as Base.|> by simply
-#   returning F(X...) instead)
-|>( X, F ) = length(X) ∈ (f.nargs-1 for f in methods(F)) ? F(X...) : F(X)
+#   prettier and more readable overall
+|>( X, F ) = F(X...)
+#   (this is as fast as Base.|> and even allocates less memory compared to the
+#    equivalent call with the original version, i.e.,
+#       (1,2) |> z-> z[1]+z[2]
+#    according to @time; however, the error-throwing condition is now placed
+#    on attempts like the above to pass collections of size > 1 to unary
+#    functions, but this can be largely mitigated by checking first that a
+#    method exists for F which has a matching number of arguments before
+#    'splatting,' i.e., using the definition
+# |>( X, F ) = length(X) ∈ (f.nargs-1 for f in methods(F)) ? F(X...) : F(X)
+#    instead, which pays a tiny performance penalty for the extra overhead)
 
 # LEFT-PIPE OPERATOR———FOR AVOIDING EVEN MORE PARENTHESES
 #   the above syntax can be extended further to support a mirrored version;
