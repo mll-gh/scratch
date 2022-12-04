@@ -1,7 +1,7 @@
 #=
         SYNTACTIC S̶U̶G̶A̶R̶ SAUCE
         =====================
-        more than just sweet
+        better than sweet
 =#
 
 
@@ -53,22 +53,27 @@
 
 # EXTENSION OF PIPE OPERATOR TO HIGHER-ARITY FUNCTIONS
 import Base.|>
-#   now the right-hand-side in piped expressions can have multiple arguments;
+#   extends right-pipe operator to support anyonmous functions with multiple
+#   arguments (though care must be taken with certain functions; see below)
 #   for example:
 #       (1, 2) |> (a,b)-> a+b
 #   returns `3` instead of an error———makes anonymous function calls much
 #   prettier and more readable overall
-|>( X, F ) = F(X...)
+|>( arg, func ) = applicable(func, arg) ? func(arg) : func(arg...)
 #   (this is as fast as Base.|> and even allocates less memory compared to the
 #    equivalent call with the original version, i.e.,
 #       (1,2) |> z-> z[1]+z[2]
-#    according to @time; however, the error-throwing condition is now placed
-#    on attempts like the above to pass collections of size > 1 to unary
-#    functions, but this can be largely mitigated by checking first that a
-#    method exists for F which has a matching number of arguments before
-#    'splatting,' i.e., using the definition
-# |>( X, F ) = length(X) ∈ (f.nargs-1 for f in methods(F)) ? F(X...) : F(X)
-#    instead, which pays a tiny performance penalty for the extra overhead)
+#    according to @time; however, an ambiguity can arise when multiple methods
+#    are available under the same handle func() taking in different numbers of
+#    arguments, e.g.,
+#    	func(a)     = ...
+#    	func(a,b)   = ...
+#    	func(a,b,c) = ...
+#    in which case func(a) will always be called, so as to enforce
+#    consistency with original behavior and avoid breaking any previously
+#    written code while also minimizing overhead———to disambiguate, simply
+#    wrap the multi-argument method in the new, prettier anonymous syntax,
+#    i.e., ` (1,2) |> (a,b)->func(a,b) `, which introduces no extra overhead)
 
 # LEFT-PIPE OPERATOR———FOR AVOIDING EVEN MORE PARENTHESES
 #   the above syntax can be extended further to support a mirrored version;
