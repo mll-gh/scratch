@@ -57,7 +57,10 @@ import Base.|>
 #   for example:
 #       (1, 2) |> (a,b)-> a+b
 #   returns `3` instead of an error———makes anonymous function calls much
-#   prettier and more readable overall (shouldn't break default behavior)
+#   prettier and more readable overall (the method-checking comes with a tiny
+#   performance hit, but minimizes interference with default behavior on non-
+#   anonymous functions; this can be made as fast as Base.|> by simply
+#   returning F(X...) instead)
 |>( X, F ) = length(X) ∈ (f.nargs-1 for f in methods(F)) ? F(X...) : F(X)
 
 # LEFT-PIPE OPERATOR———FOR AVOIDING EVEN MORE PARENTHESES
