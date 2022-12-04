@@ -41,9 +41,11 @@ import Base.|>
 <|( F, X ) = |>(X, F)
 
 # STRING-ASSIGNMENT INFIX OPERATOR
-#   metaprogramming shortcut, can be input using `\Colon<Tab>`; for example:
+#   metaprogramming shortcut, can be input using `\Colon<Tab>`;
+#   for example:
 #       "RNG" ∷ rand()
 #   places the variable `RNG` in global scope with value corresponding to the
-#   associated `rand()` call———useful for automatically generating names
-∷( handle::String, value ) = :( $(Symbol(handle)) = $value ) |> eval
+#   associated `rand()` call———also works with Symbol-valued left-hand-sides,
+#   useful for automatically populating / dynamically updating an environment
+∷( handle::Union{String,Symbol}, value ) = eval(:($(Symbol(handle)) = $value))
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
