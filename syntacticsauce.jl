@@ -1,9 +1,7 @@
 #=
-
         SYNTACTIC S̶U̶G̶A̶R̶ SAUCE
         =====================
         more than just sweet
-
 =#
 
 
@@ -20,8 +18,9 @@ import Base.|>
 # LEFT-PIPE OPERATOR———FOR AVOIDING EVEN MORE PARENTHESES
 #   the above syntax can be extended further to support a mirrored version;
 #   for example:
-#       (a,b)-> a+b <| (1,2)
-#   returns `3` analogously to the above example
+#       ((a,b)-> a+b) <| (1,2)
+#   returns `3` analogously to the above example (note the extra parentheses
+#   on the left, which are only necessary when left-piping anonymous functions)
 <|(func, arg) = |>(arg, func)
 
 
