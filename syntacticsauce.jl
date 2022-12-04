@@ -19,8 +19,8 @@
         – logical operrators, e.g., && and ||
         – the >> and << operators, which are probably bit-shifts (?REPL bug)
         – the pipe operators |> and <| extended below
-     the extensibility of <| despite any default definition suggests that
-     therem may be other symbols/combos with this special property as well...)
+     the extensibility of <| despite any default definition suggests that there
+     may be other special symbols/combos thereof with this property as well...)
 =#
 
 # EXTENSION OF PIPE OPERATOR TO HIGHER-ARITY FUNCTIONS
@@ -36,14 +36,14 @@ import Base.|>
 #   the above syntax can be extended further to support a mirrored version;
 #   for example:
 #       ((a,b)-> a+b) <| (1,2)
-#   returns `3` analogously to the above example (note the extra parentheses
-#   on the left, which are only necessary when left-piping anonymous functions)
+#   returns `3` analogously to the above example (note the extra parentheses on
+#   the left, which are only necessary when left-piping anonymous functions)
 <|( F, X ) = |>(X, F)
 
 # STRING-ASSIGNMENT INFIX OPERATOR
 #   metaprogramming shortcut, can be input using `\Colon<Tab>`; for example:
 #       "RNG" ∷ rand()
-#   places the variable `RNG` in global scope with value corresponding to
-#   the associated `rand()` call———useful for automatically generating names
+#   places the variable `RNG` in global scope with value corresponding to the
+#   associated `rand()` call———useful for automatically generating names
 ∷( handle::String, value ) = :( $(Symbol(handle)) = $value ) |> eval
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
