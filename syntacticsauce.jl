@@ -12,7 +12,7 @@ import Base.|>
 #       (1, 2) |> (a,b)-> a+b
 #   returns `3` instead of an error (though arg-counting is imperfect)———
 #   makes anonymous function calls more readable overall
-|>(arg, func) = first(methods(func)).nargs > 2 ? func(arg...) : func(arg)
+|>( arg, func ) = first(methods(func)).nargs > 2 ? func(arg...) : func(arg)
 
 
 # LEFT-PIPE OPERATOR———FOR AVOIDING EVEN MORE PARENTHESES
@@ -21,12 +21,12 @@ import Base.|>
 #       ((a,b)-> a+b) <| (1,2)
 #   returns `3` analogously to the above example (note the extra parentheses
 #   on the left, which are only necessary when left-piping anonymous functions)
-<|(func, arg) = |>(arg, func)
+<|( func, arg ) = |>(arg, func)
 
 
 # STRING-ASSIGNMENT INFIX OPERATOR
-#   input with `\Colon<Tab>` for metaprogramming shortcut; for example:
+#   metaprogramming shortcut, can be input using `\Colon<Tab>`; for example:
 #       "RNG" ∷ rand()
 #   places the variable `RNG` in global scope with value corresponding to
 #   the associated `rand()` call———useful for automatically generating names
-∷(handle::String, value) = :( $(Symbol(handle)) = $value ) |> eval
+∷( handle::String, value ) = :( $(Symbol(handle)) = $value ) |> eval
