@@ -15,10 +15,12 @@
         ⦸ ⦼ ⦾ ⦿ ⧶ ⧷ ⨇ ⨰ ⨱ ⨲ ⨳ ⨴ ⨵ ⨶ ⨷ ⨸ ⨻ ⨼ ⨽ ⩀ ⩃ ⩄ ⩋ ⩍ ⩎ ⩑ ⩓ ⩕ ⩘ ⩚ ⩜ ⩞ ⩟ ⩠
         ⫛ ⊍ ▷ ⨝ ⟕ ⟖ ⟗
     (ꜝc.f. https://discourse.julialang.org/t/is-not-an-operator/20221/2; there
-     are also a few other overloadable infix operators, such as the logical
-     logical operrators, e.g., && and ||; the >> and << operators; and of
-     course the pipe operators |> and <| extended below———the extensibility of
-     <| despite any default definition suggests others may be out there...)
+     are also a few other overloadable infix operators, such as:
+        – logical operrators, e.g., && and ||
+        – the >> and << operators, which are probably bit-shifts (?REPL bug)
+        – the pipe operators |> and <| extended below
+     the extensibility of <| despite any default definition suggests that
+     therem may be other symbols/combos with this special property as well...)
 =#
 
 # EXTENSION OF PIPE OPERATOR TO HIGHER-ARITY FUNCTIONS
