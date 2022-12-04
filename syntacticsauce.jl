@@ -16,7 +16,7 @@
         ⫛ ⊍ ▷ ⨝ ⟕ ⟖ ⟗
     (ꜝc.f. https://discourse.julialang.org/t/is-not-an-operator/20221/2; there
      are also a few other overloadable infix operators, such as the logical
-     logical operrators, e.g., && and ||; the >> and << operators, and of
+     logical operrators, e.g., && and ||; the >> and << operators; and of
      course the pipe operators |> and <| extended below———the extensibility of
      <| despite any default definition suggests others may be out there...)
 =#
