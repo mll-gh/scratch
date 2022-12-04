@@ -5,6 +5,22 @@
 =#
 
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#  INFIX OPERATORS
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#=
+    the following unicode symbolsꜝ have the special property in julia of being
+    interpretable as infix operators, like multiplication or addition, etc.:
+        * / ÷ % & ⋅ ∘ × \ ∩ ∧ ⊗ ⊘ ⊙ ⊚ ⊛ ⊠ ⊡ ⊓ ∗ ∙ ∤ ⅋ ≀ ⊼ ⋄ ⋆ ⋇ ⋉ ⋊ ⋋ ⋌ ⋏ ⋒ ⟑
+        ⦸ ⦼ ⦾ ⦿ ⧶ ⧷ ⨇ ⨰ ⨱ ⨲ ⨳ ⨴ ⨵ ⨶ ⨷ ⨸ ⨻ ⨼ ⨽ ⩀ ⩃ ⩄ ⩋ ⩍ ⩎ ⩑ ⩓ ⩕ ⩘ ⩚ ⩜ ⩞ ⩟ ⩠
+        ⫛ ⊍ ▷ ⨝ ⟕ ⟖ ⟗
+    (ꜝc.f. https://discourse.julialang.org/t/is-not-an-operator/20221/2; there
+     are also a few other overloadable infix operators, such as the logical
+     logical operrators, e.g., && and ||; the >> and << operators, and of
+     course the pipe operators |> and <| extended below———the extensibility of
+     <| despite any default definition suggests others may be out there...)
+=#
+
 # EXTENSION OF PIPE OPERATOR TO HIGHER-ARITY FUNCTIONS
 import Base.|>
 #   now the right-hand-side in piped expressions can have multiple arguments;
@@ -14,7 +30,6 @@ import Base.|>
 #   prettier and more readable overall (shouldn't break default behavior)
 |>( X, F ) = length(X) ∈ (f.nargs-1 for f in methods(F)) ? F(X...) : F(X)
 
-
 # LEFT-PIPE OPERATOR———FOR AVOIDING EVEN MORE PARENTHESES
 #   the above syntax can be extended further to support a mirrored version;
 #   for example:
@@ -23,10 +38,10 @@ import Base.|>
 #   on the left, which are only necessary when left-piping anonymous functions)
 <|( F, X ) = |>(X, F)
 
-
 # STRING-ASSIGNMENT INFIX OPERATOR
 #   metaprogramming shortcut, can be input using `\Colon<Tab>`; for example:
 #       "RNG" ∷ rand()
 #   places the variable `RNG` in global scope with value corresponding to
 #   the associated `rand()` call———useful for automatically generating names
 ∷( handle::String, value ) = :( $(Symbol(handle)) = $value ) |> eval
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
