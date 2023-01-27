@@ -1,7 +1,7 @@
 #=
         SYNTACTIC S̶U̶G̶A̶R̶ SAUCE
         =====================
-        better than sweet
+        complex and/or flavorful
 =#
 
 
